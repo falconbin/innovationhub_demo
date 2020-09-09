@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Innovation Detail</h2>
+<mat-dialog-content>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="diauserName">
+
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Who's your favorite sporter?" [(ngModel)]="favoriteSporter">
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="row">
+        <div class="col-4"><button class="mat-raised-button" (click)="close()">Close</button></div>
+        <div class="col-4"></div>
+        <div class="col-4"><button class="mat-raised-button mat-primary ml-3" [mat-dialog-close]="diauserName"
+                (click)="save(diauserName)">Save</button></div>
+    </div>
+</mat-dialog-actions>
