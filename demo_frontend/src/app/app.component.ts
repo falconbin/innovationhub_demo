@@ -67,8 +67,8 @@ export class AppComponent {
     const time = new Date();
     headers.append('Content-Type','application/json');
 
-    const myData= JSON.stringify({ userName:this.email, password:this.password,timeStamp:time})
-    this.http.post('/api',myData, {headers})
+    const myData= JSON.stringify({ email:this.email, password:this.password,timeStamp:time})
+    this.http.post('/employee', myData, {headers})
     .subscribe( 
     data=>console.log(data),
     err=>console.log('Something went wrong!'))

@@ -7,6 +7,7 @@ import { Department } from "src/entity/department";
 const userService: UserService = new UserService(new DBHelper("DLC000G4C59H2LD", 1433, "sa", "123456!Q@W", "innovationhub",));
 router.post('/', (req, res) => {  
   console.log("add user")
+  console.log(req.body);
   const body = req.body
   const user: User = new User()
   user.name = body.name

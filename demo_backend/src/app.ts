@@ -2,6 +2,7 @@
 import express=require('express');
 import "reflect-metadata";
 const user = require('./routes/userroute');
+const employee = require('./routes/employeeroute');
 const bodyParser = require('body-parser');
 const department = require('./routes/department');
 const project = require('./routes/project');
@@ -19,11 +20,12 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.get('/',function(req,res){
     res.send('Hello World!');
 });
-app.post('/api', (req, res) => {
-    console.log(req.body);
-    res.send('Back End Test Successful');
-  });
+// app.post('/api', (req, res) => {
+//     console.log(req.body);
+//     res.send('Back End Test Successful');
+//   });
 app.use("/users",user)
+app.use("/employee",employee)
 app.use("/department",department)
 app.use("/project",project)
 
