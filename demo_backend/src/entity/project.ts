@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, OneToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { User } from "./user";
 
 @Entity()
@@ -11,6 +11,6 @@ export class Project {
     @Column()
     description: string;
 
-    @OneToMany(type => User, user => user.project) // note: we will create author property in the Photo class below
+    @OneToMany(type => User, user => user.project, {cascade: true})
     users: User[];
 }
