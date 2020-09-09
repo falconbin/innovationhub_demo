@@ -48,7 +48,7 @@ export class AppComponent {
   userName = '';
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
-
+  //test
   //private router: Router,
   //inject the dialog service via the constructor
   constructor(private dialog: MatDialog,private http: Http) {
