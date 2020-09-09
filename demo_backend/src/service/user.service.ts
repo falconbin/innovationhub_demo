@@ -7,11 +7,11 @@ export class UserService {
     constructor(private dbhelper: DBHelper) {
         this.dbhelper = dbhelper;
     }
-    async createOrUpdateEntity<T>(entity: T): Promise<T> {
+    async createUser(user): Promise<User> {
         try {
             const connection: Connection = await this.dbhelper.getDbConnection();
             // await this.dbhelper.closeConnection()
-            const inserted: T = await connection.manager.save(entity);
+            const inserted = await connection.getRepository(User).save(user);
             if(inserted){
                 return inserted;
             }
@@ -37,6 +37,15 @@ export class UserService {
         return res;
     }
 
+    async findUserByNameAndGender(name, gender){
+
+        const connection: Connection = await this.dbhelper.getDbConnection();
+        // return await connection.getRepository(User).createQueryBuilder().
+        // select().where("[user].name = :name OR [user].gender = :gender", { name: name, gender: gender }).getMany()
+        return await connection.getRepository(User).createQueryBuilder().
+        select().where("[user].name = :name OR [user].gender = :gender", { name: name, gender: gender }).getMany()
+        
+    }
     async addUserCascade() {
         const connection: Connection = await this.dbhelper.getDbConnection();
         // const res = await connection.getRepository(User).delete({id:1})
