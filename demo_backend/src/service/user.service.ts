@@ -9,19 +9,14 @@ export class UserService {
     // }
     async createUser(user): Promise<User> {
         const connection: Connection = getConnection();
-        try {
+
             const inserted = await connection.getRepository(User).save(user);
             if(inserted){
                 return inserted;
+            }else {
+                return null
             }
-            return inserted;
-        } catch {
-            await connection.close()
-        }finally {
-            
-        }
     }
-
     async findUserById(id) {
         const connection: Connection = getConnection();
         // await this.dbhelper.closeConnection()
@@ -34,7 +29,6 @@ export class UserService {
     async deleteuser(id) {
         const connection: Connection = getConnection();
         const res = connection.getRepository(User).delete({id:1})
-        connection.close();
         return res;
     }
 

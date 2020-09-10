@@ -2,39 +2,30 @@
 import { Connection } from 'typeorm';
 
 import { Employee } from "../entity/employee"
-import { createConnection, getConnection} from "typeorm";
+import { createConnection, getConnection } from "typeorm";
 
 export class EmployeeService {
-    
+
     async createEmployee(employee): Promise<Employee> {
-        try {
-            const connection: Connection = await createConnection()
-            // await this.dbhelper.closeConnection()
-            const inserted = await connection.getRepository(Employee).save(employee);
-            if(inserted){
-                return inserted;
-            }
+
+        const connection: Connection = await getConnection()
+        // await this.dbhelper.closeConnection()
+        const inserted = await connection.getRepository(Employee).save(employee);
+        if (inserted) {
             return inserted;
-        } finally {
-            await getConnection().close();
         }
+        return inserted;
     }
     async getEmployee(): Promise<Employee[]> {
-        try {
-            const connection: Connection = await createConnection()
-            const employees = await connection.getRepository(Employee).find()
-            return employees;
-        } finally {
-            await getConnection().close();
-        }
+
+        const connection: Connection = await getConnection()
+        const employees = await connection.getRepository(Employee).find()
+        return employees;
+
     }
     async getEmployeeByEmail(email): Promise<Employee[]> {
-        try {
-            const connection: Connection = await getConnection()
-            const employees = await connection.getRepository(Employee).find({email:email})
-            return employees;
-        } finally {
-            await getConnection().close();
-        }
+        const connection: Connection = await getConnection()
+        const employees = await connection.getRepository(Employee).find({ email: email })
+        return employees;
     }
 }
