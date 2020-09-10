@@ -5,7 +5,7 @@ import { Department } from 'src/entity/department';
 import { createConnection, getConnection} from "typeorm";
 export class DepartmentService {
     async findByid(id) {
-        const connection: Connection = await createConnection()
+        const connection: Connection = await getConnection()
         // await this.dbhelper.closeConnection()
         const department = await  connection.getRepository(Department).findOne({id: id})
         // const department = await  connection.getRepository(Department).findOne({id: id},{ relations: ["user"] })
@@ -16,14 +16,12 @@ export class DepartmentService {
         // .getOne()
         // console.log('department', department.user)
         // console.log('department', department)
-        connection.close();
         return department;
     }
 
-    async deleteuser(id) {
+    async deleteDepartment(id) {
         const connection: Connection = await getConnection();
-        const res = connection.getRepository(User).delete({id:1})
-        connection.close();
+        const res = connection.getRepository(Department).delete({id:id})
         return res;
     }
 

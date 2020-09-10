@@ -1,6 +1,7 @@
 
 import express=require('express');
 import "reflect-metadata";
+import { createConnection } from "typeorm";
 const user = require('./routes/userroute');
 const employee = require('./routes/employeeroute');
 const bodyParser = require('body-parser');
@@ -28,7 +29,7 @@ app.use("/users",user)
 app.use("/employee",employee)
 app.use("/department",department)
 app.use("/project",project)
-
+createConnection()
 app.listen(8080,function(){
     console.log('Example app listening on port 8080!');
 })

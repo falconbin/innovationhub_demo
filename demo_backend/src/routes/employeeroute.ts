@@ -27,4 +27,16 @@ router.get('/', (req, res) => {
        }
      })
 });
+
+router.get('/email/:email', (req, res) => {
+
+  console.log(req.params.email)
+  employeeService.getEmployeeByEmail(req.params.email).then(employees => {
+    if(employees){
+      res.send(employees)
+    }else {
+     res.send("error")
+    }
+  })
+});
 module.exports = router

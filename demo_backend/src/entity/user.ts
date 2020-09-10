@@ -17,10 +17,10 @@ export class User {
     @Column()
     age: number;
 
-    @OneToOne(type => Department, department => department.user)
+    @OneToOne(type => Department, department => department.user, {cascade:true})
     @JoinColumn()
     department: Department
 
-    @ManyToOne(type => Project, project => project.users)
+    @ManyToOne(type => Project, project => project.users, )
     project: Project
 }

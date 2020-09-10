@@ -4,7 +4,7 @@ import { UserService } from "../service/user.service"
 import { DBHelper } from '../utils/dbhelper';
 import { User } from '../entity/user';
 import { Department } from "src/entity/department";
-const userService: UserService = new UserService(new DBHelper("DLC000G4C59H2LD", 1433, "sa", "123456!Q@W", "innovationhub",));
+const userService: UserService = new UserService();
 router.post('/', (req, res) => {  
   console.log("add user")
   console.log(req.body);
@@ -20,6 +20,7 @@ router.post('/', (req, res) => {
       res.send("error")
     }
   });
+
   // const department: Department = new Department()
   // department.departname = "CIO"
   // department.description = "slfjlskfs";
@@ -31,6 +32,17 @@ router.post('/', (req, res) => {
   //   }
   // });
 });
+
+router.post('/user/department', (req, res) => {  
+    
+  userService.addUserWithDepartment(req.body).then((data) => {
+    if (data) {
+      res.send(data)
+    } else {
+      res.send("error")
+    }
+  });
+})
 
 router.get("/id/:id", (req, res) => {
   console.log(req.params.id)

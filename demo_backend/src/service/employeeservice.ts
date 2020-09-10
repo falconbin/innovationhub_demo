@@ -28,5 +28,13 @@ export class EmployeeService {
             await getConnection().close();
         }
     }
-
+    async getEmployeeByEmail(email): Promise<Employee[]> {
+        try {
+            const connection: Connection = await getConnection()
+            const employees = await connection.getRepository(Employee).find({email:email})
+            return employees;
+        } finally {
+            await getConnection().close();
+        }
+    }
 }
