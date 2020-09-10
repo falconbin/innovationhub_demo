@@ -10,5 +10,6 @@
         "trustedConnection": true
       }
     },
+    "synchronize": true,
     "entities": ["src/entity/*.ts"]
   }
