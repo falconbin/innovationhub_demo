@@ -11,7 +11,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InnovationDialogComponent } from './innovation-dialog/innovation-dialog.component';
 import { HttpModule } from '@angular/http';
-
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter.reducer';
 let route = [{
   path: "dashboard", component: DashboardComponent
 }];
@@ -31,7 +32,8 @@ let route = [{
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(route),
-    HttpModule
+    HttpModule,
+    StoreModule.forRoot({ count: counterReducer })
   ],
   exports: [
 

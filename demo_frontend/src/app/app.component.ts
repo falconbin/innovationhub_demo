@@ -7,7 +7,9 @@ import { MatTableDataSource } from '@angular/material/table/';
 import { MatDialog } from '@angular/material/dialog';
 import { InnovationDialogComponent } from './innovation-dialog/innovation-dialog.component';
 import {Http,Headers} from '@angular/http';
-
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { increment } from './counter.actions';
 export interface Innovation {
   Position: number,
   EID: string,
@@ -48,10 +50,13 @@ export class AppComponent {
   userName = '';
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
-
+  count$: Observable<number>;
+  id$: Observable<number>;
   //private router: Router,
   //inject the dialog service via the constructor
-  constructor(private dialog: MatDialog,private http: Http) {
+  constructor(private dialog: MatDialog,private http: Http, private store: Store<{ count: number,id:number }>) {
+    this.count$ = store.pipe(select('count'));
+    this.id$ = store.pipe(select('id'));
   }
 
   displayedColumns: string[] = ['select', 'Position', 'EID', 'Role', 'SeatNo'];
@@ -62,6 +67,9 @@ export class AppComponent {
   //initial the select model
   selection = new SelectionModel<Innovation>(true, []);
 
+  increment() {
+    this.store.dispatch(increment());
+  }
   Login() {
     let headers= new Headers();
     const time = new Date();
