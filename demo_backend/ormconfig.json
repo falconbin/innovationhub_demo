@@ -1,15 +1,17 @@
 {
-    "type": "mssql",
-    "host": "DLC000G4C59H2LD",
-    "database": "innovationhub",
-    "username":"sa",
-    "password":"123456!Q@W",
-    "extra": {
-      "driver": "mssql/msnodesqlv8",
-      "options": {
-        "trustedConnection": true
-      }
-    },
-    "synchronize": true,
-    "entities": ["src/entity/*.ts"]
-  }
+  "type": "mssql",
+  "host": "localhost",
+  "database": "Innovationhub",
+  "username": "sa",
+  "password": "Joepeng751$",
+  "extra": {
+    "driver": "mssql/msnodesqlv8",
+    "options": {
+      "trustedConnection": true
+    }
+  },
+  "synchronize": true,
+  "entities": [
+    "src/entity/*.ts"
+  ]
+}

@@ -13,6 +13,7 @@ import { InnovationDialogComponent } from './innovation-dialog/innovation-dialog
 import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter.reducer';
+import { LoginComponent } from './login/login.component';
 let route = [{
   path: "dashboard", component: DashboardComponent
 }];
@@ -21,7 +22,8 @@ let route = [{
   declarations: [
     AppComponent,
     DashboardComponent,
-    InnovationDialogComponent
+    InnovationDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
