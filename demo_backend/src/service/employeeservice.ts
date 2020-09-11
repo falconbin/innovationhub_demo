@@ -19,7 +19,8 @@ export class EmployeeService {
     async getEmployee(): Promise<Employee[]> {
 
         const connection: Connection = await getConnection()
-        const employees = await connection.getRepository(Employee).find()
+        // const employees = await connection.getRepository(Employee).find()
+        const employees = await connection.getRepository(Employee).createQueryBuilder().getMany()
         return employees;
 
     }
