@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - echo go to demo_frontend folder
+      - cd demo_frontend
+      - echo installing dependencies...
+      - npm i -g @angular/cli
+      - npm install
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - ng build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - demo_frontend/dist/**/*
