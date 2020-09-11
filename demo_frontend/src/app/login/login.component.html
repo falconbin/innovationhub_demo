@@ -1,0 +1,56 @@
+<div class="row mt-5 ml-3" style="font-size:xx-large; font-style: oblique; color:orange;font-weight: 500px;">
+    Welcome to Innovation.
+</div>
+<div>
+
+    <form class="example-form mt-3">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <mat-form-field>
+                    <label>Email:</label>
+                    <input matInput [formControl]="emailFormControl" [(ngModel)]="email">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <mat-form-field>
+                    <label>Password:</label>
+                    <input matInput type="password" [(ngModel)]="password" [formControl]="passwordFormControl">
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <section class="example-section">
+                    <mat-checkbox [(ngModel)]="checked" name="checked">ACC stuff</mat-checkbox>
+                </section>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <button mat-raised-button (click)="Login()" style="border-color:lightskyblue; border-radius: 5px;">
+                    Login
+                </button>
+                <button mat-raised-button style="margin-left: 50px; border-color: lightskyblue; border-radius: 5px;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
