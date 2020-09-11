@@ -1,6 +1,6 @@
 {
     "type": "mssql",
-    "host": "DLC000G4C59H2LD",
+    "host": "localhost",
     "database": "innovationhub",
     "username":"sa",
     "password":"123456!Q@W",
