@@ -4,10 +4,11 @@
   "description": "innovationhub-typescript",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/app.ts",
-    "db": "rm -rf entities &  typeorm-model-generator -h localhost -d innovationhub -p 1433 -u sa -x 123456!Q@W -e mssql -o entities --noConfig true --ce pascal --cp camel"
+    "db": "ypeorm-model-generator -h localhost -d innovationhub -p 1433 -u sa -x 123456!Q@W -e mssql -o entities --noConfig true --ce pascal --cp camel",
+    "migrate":"ts-node node_modules\\typeorm\\cli.js migration:run"
   },
   "repository": {
     "type": "git",

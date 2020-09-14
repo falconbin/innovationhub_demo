@@ -28,6 +28,18 @@ router.get('/', (req, res) => {
      })
 });
 
+router.get('/eid/:eid', (req, res) => {
+
+  console.log(req.params.eid)
+  employeeService.getEmployeeByEidLike(req.params.eid).then(employees => {
+    if(employees){
+      res.send(employees)
+    }else {
+     res.send("error")
+    }
+  })
+});
+
 router.get('/email/:email', (req, res) => {
 
   console.log(req.params.email)
