@@ -9,6 +9,9 @@ router.post('/', (req, res) => {
   const employee = new Employee()
   employee.email = body.email
   employee.password = body.password
+  employee.eid = body.eid
+  employee.role = body.role
+  employee.belongto = body.belongto
   employeeService.createEmployee(employee).then(returvalue => {
     if (returvalue) {
       res.send(returvalue)
@@ -19,24 +22,26 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-     employeeService.getEmployee().then(employees => {
-       if(employees){
-         res.send(employees)
-       }else {
-        res.send("error")
-       }
-     })
+  employeeService.getEmployee().then(employees => {
+    if (employees) {
+      res.send(employees)
+    } else {
+      res.send("error")
+    }
+  })
 });
 
 router.get('/email/:email', (req, res) => {
 
   console.log(req.params.email)
+
   employeeService.getEmployeeByEmail(req.params.email).then(employees => {
-    if(employees){
+    if (employees) {
       res.send(employees)
-    }else {
-     res.send("error")
+    } else {
+      res.send("error")
     }
   })
+
 });
 module.exports = router

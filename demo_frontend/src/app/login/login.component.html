@@ -34,9 +34,40 @@
         <div class="row">
             <div class="col-8"></div>
             <div class="col-4">
-                <section class="example-section">
-                    <mat-checkbox [(ngModel)]="checked" name="checked">ACC stuff</mat-checkbox>
-                </section>
+                <mat-form-field>
+                    <label>EID:</label>
+                    <input matInput type="text" [(ngModel)]="eid" [formControl]="passwordFormControl">
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                        EID is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <mat-form-field>
+                    <label>Role:</label>
+                    <select matNativeControl required name="role" [(ngModel)]="role">
+                        <option value="Scrum Master">Scrum Master </option>
+                        <option value="Cell Leader">Cell Leader </option>
+                        <option Value="Developer">Developer</option>
+                        <optgroup Value="Tester">Tester</optgroup>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <mat-form-field>
+                    <label>Belong To:</label>
+                    <select matNativeControl required name="belongTo" [(ngModel)]="belongTo">
+                        <option value="Technical EI">Technical EI</option>
+                        <option value="SCALE INNOVATION">SCALE INNOVTION </option>
+                        <option Value="AI ACCESS INNOVATION">AI ACCESS INNOVATION</option>
+                    </select>
+                </mat-form-field>
             </div>
         </div>
         <div class="row mt-2">
