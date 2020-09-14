@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   title = 'AngularMaterialApp';
   email = "";
   password = "";
+  eid = "";
+  role = "";
+  belongTo = "";
   panelOpenState = false;
   checked = false;
   userName = '';
@@ -26,18 +29,21 @@ export class LoginComponent implements OnInit {
 
   Login() {
 
-    let headers = new Headers();
-    const time = new Date();
-    headers.append('Content-Type', 'application/json');
+    if (this.email != '' && this.password != '' && this.eid != '' && this.role != '' && this.belongTo != '') {
+      let headers = new Headers();
+      const time = new Date();
+      headers.append('Content-Type', 'application/json');
 
-    const myData = JSON.stringify({ email: this.email, password: this.password, timeStamp: time })
-    this.http.post('/employee', myData, { headers })
-      .subscribe(
-        data => console.log(data),
-        err => console.log('Something went wrong!'))
+      const myData = JSON.stringify({
+        email: this.email, password: this.password, eid: this.eid,
+        role: this.role, belongto: this.belongTo, timeStamp: time
+      })
+      this.http.post('/employee', myData, { headers })
+        .subscribe(
+          data => console.log(data),
+          err => console.log('Something went wrong!'))
+    }
 
-
-    //routerLink='/dashboard'
     this.router.navigate(['dashboard']);
 
   }

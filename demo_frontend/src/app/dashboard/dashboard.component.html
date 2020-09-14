@@ -24,34 +24,36 @@
         </div>
     </div>
     <div class="row" *ngIf="HaveData">
-        <mat-table [dataSource]="tkmdatasource" class="mat-elevation-z8">
-            <!-- Position Column -->
-            <ng-container matColumnDef="Position">
-                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.Position}} </mat-cell>
-            </ng-container>
 
-            <!-- EID Column -->
-            <ng-container matColumnDef="EID">
-                <mat-header-cell *matHeaderCellDef> EID </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.EID}} </mat-cell>
-            </ng-container>
+        <div class="col-12 ml-1 mr-3">
 
-            <!-- Role Column -->
-            <ng-container matColumnDef="Role">
-                <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.Role}} </mat-cell>
-            </ng-container>
+            <mat-table [dataSource]="datasource" class="mat-elevation-z8">
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="EID">
+                    <mat-header-cell *matHeaderCellDef> EID </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.eid}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="ROLE">
+                    <mat-header-cell *matHeaderCellDef> ROLE </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.role}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Group">
+                    <mat-header-cell *matHeaderCellDef> Group </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.belongto}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="kmdispalyColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: kmdispalyColumns;"></mat-row>
+            </mat-table>
 
-            <!-- Seat Column -->
-            <ng-container matColumnDef="SeatNo">
-                <mat-header-cell *matHeaderCellDef> SeatNo </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.SeatNo}} </mat-cell>
-            </ng-container>
+        </div>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
     </div>
 </div>
 
@@ -64,29 +66,20 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-table [dataSource]="tpmdatasource" class="mat-elevation-z8">
-                <!-- Position Column -->
-                <ng-container matColumnDef="Position">
-                    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.Position}} </mat-cell>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef> email </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="password">
+                    <mat-header-cell *matHeaderCellDef> password </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.password}} </mat-cell>
                 </ng-container>
 
-                <!-- EID Column -->
-                <ng-container matColumnDef="EID">
-                    <mat-header-cell *matHeaderCellDef> EID </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.EID}} </mat-cell>
-                </ng-container>
 
-                <!-- Role Column -->
-                <ng-container matColumnDef="Role">
-                    <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.Role}} </mat-cell>
-                </ng-container>
-
-                <!-- Seat Column -->
-                <ng-container matColumnDef="SeatNo">
-                    <mat-header-cell *matHeaderCellDef> SeatNo </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.SeatNo}} </mat-cell>
-                </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

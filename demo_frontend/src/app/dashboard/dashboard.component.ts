@@ -11,17 +11,12 @@ export interface Innovation {
   Role: string,
   SeatNo: number
 }
-let tkmdatasource;
-let tpmdatasource;
-const PMDatasource: Innovation[] = [
-  { Position: 1, EID: 'jian.a.zheng', Role: 'Team leader', SeatNo: 181 },
-  { Position: 2, EID: 'cunlong.liu', Role: 'Team leader', SeatNo: 182 },
-  { Position: 3, EID: 'sharry.huaiyu.gao', Role: 'Developer', SeatNo: 183 },
-  { Position: 4, EID: 'yan.sang', Role: 'Developer', SeatNo: 184 },
-  { Position: 5, EID: 'jing.wang', Role: 'Developer', SeatNo: 185 },
-  { Position: 6, EID: 'qing.tao', Role: 'Tester', SeatNo: 186 }
-];
 
+export interface Employee {
+  id: number,
+  email: string,
+  password: string
+}
 
 
 @Component({
@@ -31,46 +26,62 @@ const PMDatasource: Innovation[] = [
 })
 export class DashboardComponent implements OnInit {
 
+
+  PMDatasource = [
+    { id: 6, email: 'qing.tao1', password: 186 }
+  ];
+  datasource;
+  tpmdatasource: any[];
+  tkmdatasource: any[];
   HaveData = false;
   params: any;
   temail = '';
   email = '';
-
-  tkmdatasource = [];
   userName = '';
   panelOpenState = false;
   constructor(private dialog: MatDialog, private http: Http) {
-
+    this.tpmdatasource = this.PMDatasource;
   }
 
   ngOnInit(): void {
-    this.ObtainKMList(this.temail);
+    this.InitalEmployee();
+  }
+
+  InitalEmployee() {
+    this.http.get('/employee/')
+      .subscribe((resp_data: any) => {
+        this.datasource = JSON.parse(resp_data._body);
+        if (this.datasource != undefined && this.datasource.length > 0) {
+          this.HaveData = true;
+        }
+      })
   }
 
   ObtainKMList(email: string) {
 
+    if (email == '') {
+      this.http.get('/employee/')
+        .subscribe((resp_data: any) => {
+          this.datasource = JSON.parse(resp_data._body);
+          if (this.datasource != undefined && this.datasource.length > 0) {
+            this.HaveData = true;
+          }
+        })
+    }
+    else {
+      this.http.get('/employee/email/' + email + '')
+        .subscribe((resp_data: any) => {
+          this.datasource = JSON.parse(resp_data._body);
 
-    this.http.get('/employee/email/' + email + '')
-      .subscribe((resp_data: any) => {
-        var TabelData = resp_data._body;
-      }
-      )
-
-    // email = email.trim();
-
-    // const options = email ? { params: new HttpParams().set('email', email) } : {};
-    // this.http.get('/employee/email/', options)
-    //   .subscribe((resp_data: any) => {
-    //     var TabelData = resp_data._body;
-    //   }
-    //   )
-
+          if (this.tkmdatasource != undefined && this.tkmdatasource.length > 0) {
+            this.HaveData = true;
+          }
+        })
+    }
   };
 
-
-  displayedColumns: string[] = ['Position', 'EID', 'Role', 'SeatNo'];
-  // tkmdatasource = new MatTableDataSource<Innovation>(KMDatasource);
-  tpmdatasource = new MatTableDataSource<Innovation>(PMDatasource);
+  kmdispalyColumns: string[] = ['id', 'EID', 'ROLE', 'Group', 'email'];
+  displayedColumns: string[] = ['id', 'email', 'password'];
 
   openDialog() {
     //config the dialog detail information such as width,height, data.
