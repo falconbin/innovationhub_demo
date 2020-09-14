@@ -8,6 +8,6 @@ export class Category {
     @Column()
     name: string
     @ManyToMany(type => Question, {cascade:true})
-    @JoinTable()
+    @JoinTable({name:"aaaaaa"})
     questions: Question[]
 }

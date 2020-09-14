@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
-    "start": "ts-node -r tsconfig-paths/register src/app.ts"
+    "start": "ts-node -r tsconfig-paths/register src/app.ts",
+    "db": "rm -rf entities &  typeorm-model-generator -h localhost -d innovationhub -p 1433 -u sa -x 123456!Q@W -e mssql -o entities --noConfig true --ce pascal --cp camel"
   },
   "repository": {
     "type": "git",

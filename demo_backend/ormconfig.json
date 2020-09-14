@@ -3,7 +3,7 @@
   "host": "localhost",
   "database": "Innovationhub",
   "username": "sa",
-  "password": "Joepeng751$",
+  "password": "123456!Q@W",
   "extra": {
     "driver": "mssql/msnodesqlv8",
     "options": {
