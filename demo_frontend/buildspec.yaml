@@ -5,6 +5,8 @@ phases:
     runtime-versions:
       nodejs: 10
     commands:
+      - echo go to demo_frontend folder
+      - cd demo_frontend
       - echo installing dependencies...
       - npm i -g @angular/cli
       - npm install
@@ -20,4 +22,4 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - dist/**/*
+    - demo_frontend/dist/**/*
