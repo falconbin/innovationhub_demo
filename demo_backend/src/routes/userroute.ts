@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
 import { UserService } from "../service/user.service"
-import { DBHelper } from '../utils/dbhelper';
 import { User } from '../entity/user';
-import { Department } from "src/entity/department";
+
 const userService: UserService = new UserService();
 router.post('/', (req, res) => {  
   console.log("add user")

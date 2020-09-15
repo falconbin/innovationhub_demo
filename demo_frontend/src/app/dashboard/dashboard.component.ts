@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
         })
     }
     else {
-      this.http.get('/employee/email/' + email + '')
+      this.http.get('/employee/eid/' + email + '')
         .subscribe((resp_data: any) => {
           this.datasource = JSON.parse(resp_data._body);
 

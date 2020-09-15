@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 router.get('/eid/:eid', (req, res) => {
 
   console.log(req.params.eid)
-  employeeService.getEmployeeByEidLike(req.params.eid).then(employees => {
+  employeeService.getEmployeeByEidLike(req.params.eid.trim()).then(employees => {
     if(employees){
       res.send(employees)
     }else {

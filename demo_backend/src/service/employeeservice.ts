@@ -31,8 +31,8 @@ export class EmployeeService {
     }
     async getEmployeeByEidLike(eid): Promise<Employee[]> {
         const connection: Connection = await getConnection()
-        const employees = await connection.getRepository(Employee).createQueryBuilder().
-                          select("employee").from(Employee,"employee").where("employee.eid like %:eid%",{eid:eid})
+        const employees = await connection.getRepository(Employee).createQueryBuilder("employee").
+                          where("employee.eid like :eid",{eid:`%${eid}%`})
                           .getMany()
         return employees;
     }
