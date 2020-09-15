@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "AngularMaterialApp"
+  "defaultProject": "AngularMaterialApp",
+  "cli": {
+    "analytics": false
+  }
 }

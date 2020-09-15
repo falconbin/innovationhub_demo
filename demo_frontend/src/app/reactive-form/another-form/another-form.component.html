@@ -1,0 +1,28 @@
+<!-- <div>FormArray 是 FormGroup 之外的另一个选择，用于管理任意数量的匿名控件。像 FormGroup 实例一样，你也可以往 FormArray 中动态插入和移除控件，并且 FormArray
+    实例的值和验证状态也是根据它的子控件计算得来的。 不过，你不需要为每个控件定义一个名字作为 key，因此，<span style="color: red;">如果你事先不知道子控件的数量</span>，这就是一个很好的选择。</div>
+<ul>
+    要定义一个动态表单，请执行以下步骤。
+    <li>导入 FormArray 类。</li>
+    <li>定义一个 FormArray 控件。</li>
+    <li>使用 getter 方法访问 FormArray 控件。</li>
+    <li>在模板中显示这个表单数组。</li>
+    formArrayName
+</ul> -->
+<div [formGroup]="anotherForm">
+  <p>Company: {{anotherForm.get('company').value}}</p>
+  <div formArrayName="buildings">
+    <h3>Buildings</h3> <button (click)="addBuildings()" style="margin:20px 0">Add Buildings</button>
+    <div *ngFor="let build of buildings.controls; let i=index">
+      <label>
+        Buildings:
+        <input type="text" [formControlName]="i">
+      </label>
+    </div>
+  </div>
+</div>
+
+<div>
+  <p>
+    Form Value: {{ anotherForm.value |json }}
+  </p>
+</div>
