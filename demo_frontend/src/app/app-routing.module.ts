@@ -4,9 +4,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-
+import { AuthGuard } from './auth.guard';
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, canActivate: [AuthGuard],},
   { path: "dashboard", component: DashboardComponent },
   { path: 'reactiveForm', component: ReactiveFormComponent }
 ];
