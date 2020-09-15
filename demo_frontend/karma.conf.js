@@ -1,14 +1,29 @@
 module.exports = function (config) {
     config.set({
-        frameworks: ["jasmine", "karma-typescript"],
-        files: ["src/**/*.ts"// *.tsx for React Jsx
-        ],
-        preprocessors: {
-            "**/*.ts": "karma-typescript"// *.tsx for React Jsx
-        },
-        reporters: ["progress", "karma-typescript"],
-        browsers: ["Chrome"]
+      basePath: '',
+      frameworks: ['jasmine', '@angular-devkit/build-angular'],
+      plugins: [
+        require('karma-jasmine'),
+        require('karma-chrome-launcher'),
+        require('karma-jasmine-html-reporter'),
+        require('karma-coverage-istanbul-reporter'),
+        require('@angular-devkit/build-angular/plugins/karma')
+      ],
+      client: {
+        clearContext: false // leave Jasmine Spec Runner output visible in browser
+      },
+      coverageIstanbulReporter: {
+        dir: require('path').join(__dirname, './coverage/AngularMaterialApp'),
+        reports: ['html', 'lcovonly', 'text-summary'],
+        fixWebpackSourcePaths: true
+      },
+      reporters: ['progress', 'kjhtml'],
+      port: 9876,
+      colors: true,
+      logLevel: config.LOG_INFO,
+      autoWatch: true,
+      browsers: ['Chrome'],
+      singleRun: false,
+      restartOnFileChange: true
     });
-};
-
-
+  };
