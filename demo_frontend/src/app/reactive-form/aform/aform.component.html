@@ -1,0 +1,46 @@
+<form [formGroup]="validateForm">
+    <div>
+        <div>
+            <span class="title">Name:</span><input type="text" formControlName="name">
+            <span></span>
+        </div>
+        <div>
+            <span class="title">Age:</span><input type="text" formControlName="age" [ngClass]="{'error':validateForm.get('age').errors}">
+            <span *ngIf="validateForm.get('age').errors">{{validateForm.get('age').errors | json}}</span>
+        </div>
+        <div>
+            <span class="title">Email:</span><input type="text" formControlName="email">
+            <span></span>
+        </div>
+    </div>
+    
+    <div formGroupName="address">
+        <div>
+            <span class="title">Area:</span><input type="text" formControlName="area" [ngClass]="{'error':validateForm.get('address').get('area').errors}">
+            <span *ngIf="validateForm.get('address').get('area').errors">{{validateForm.get('address').get('area').errors | json}}</span>
+        </div>
+        <div>
+            <span class="title">Street:</span><input type="text" formControlName="street" [ngClass]="{'error':addressForm.get('street').errors}">
+            <span *ngIf="addressForm.get('street').errors">{{addressForm.get('street').errors | json}}</span>
+        </div>
+        <div>
+            <span class="title">HouseId:</span><input type="text" formControlName="houseId">
+            <span></span>
+        </div>
+    </div>
+</form>
+<div>
+    <button (click)="initForm()">清空表单</button>
+    <button (click)="initAddressForm()">清空Address</button>
+    <button (click)="setFormValue()">setValue</button>
+    <button (click)="patchFormValue()">patchValue</button>  
+    <button (click)="submitForm()" [disabled]="validateForm.status=='INVALID'">submitForm</button>  
+</div>
+<div>
+    <p>
+        Form Status: {{ validateForm.status }}
+    </p>
+    <p>
+        Form Value: {{ validateForm.value |json }}
+    </p>
+</div>

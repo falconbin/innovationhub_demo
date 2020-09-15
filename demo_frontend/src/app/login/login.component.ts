@@ -48,4 +48,8 @@ export class LoginComponent implements OnInit {
 
   }
 
+  toReactive() {
+    this.router.navigate(['reactiveForm']);
+  }
+
 }
