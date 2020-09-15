@@ -11,9 +11,10 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): boolean {
+    return true;
     this.adal.init(environment.config);
     this.adal.handleWindowCallback();
-    //return true;
+
     if (this.adal.userInfo.authenticated) {
       return true;
     }
